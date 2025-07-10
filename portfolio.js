@@ -1,6 +1,6 @@
 // Typing Animation
         const typingText = document.getElementById('typing-text');
-        const texts = [' Data Analyst', ' Web Developer', 'Problem Solver', 'Creative Thinker'];
+        const texts = [' Data Analyst', ' Web Developer', ' IT Sophomore', 'Generative AI (Beginner) '];
         let textIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -121,7 +121,7 @@
             rootMargin: '0px 0px -100px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const sectionObserver = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
@@ -135,5 +135,37 @@
             section.style.opacity = '0';
             section.style.transform = 'translateY(50px)';
             section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(section);
+            sectionObserver.observe(section);
+        });
+        // Animate skill bars on scroll
+        const skillsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.skill-progress');
+                    progressBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0%';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 300);
+                    });
+                }
+            });
+        });
+
+        document.querySelectorAll('.skills-category').forEach(category => {
+            skillsObserver.observe(category);
+        });
+
+        // Add scroll animations for course cards
+        const courseObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out';
+                }
+            });
+        });
+
+        document.querySelectorAll('.course-card').forEach(card => {
+            courseObserver.observe(card);
         });
