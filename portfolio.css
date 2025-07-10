@@ -289,6 +289,103 @@
         }
 
         /* Skills Section */
+        .skills-container {
+            margin-top: 40px;
+        }
+
+        .skills-category {
+            margin-bottom: 50px;
+        }
+
+        .skills-category h3 {
+            font-size: 1.8rem;
+            color: #e50914;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .skills-category h3::before {
+            content: '';
+            width: 30px;
+            height: 3px;
+            background: linear-gradient(90deg, #e50914, #f40612);
+            margin-right: 15px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(229, 9, 20, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            border-color: #e50914;
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.2);
+        }
+
+        .skill-item:hover::before {
+            opacity: 1;
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #ffffff;
+            z-index: 1;
+            position: relative;
+        }
+
+        .skill-level {
+            font-size: 0.9rem;
+            color: #e50914;
+            margin-bottom: 15px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background: #333333;
+            border-radius: 4px;
+            overflow: hidden;
+            z-index: 1;
+            position: relative;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #e50914, #f40612);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+        /* Skills Slider */
         .skills-slider {
             margin: 4rem 0;
         }
@@ -433,6 +530,87 @@
 
         .project-link:hover {
             color: #f40612;
+        }
+
+        /* Courses Section */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .course-card {
+            background: linear-gradient(145deg, #1f1f1f, #0f0f0f);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #e50914, #f40612, #e50914);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            border-color: #e50914;
+            box-shadow: 0 20px 40px rgba(229, 9, 20, 0.2);
+        }
+
+        .course-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .course-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .course-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #e50914, #f40612);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        .course-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .course-provider {
+            font-size: 0.9rem;
+            color: #e50914;
+            margin-bottom: 10px;
+        }
+
+        .course-description {
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .course-date {
+            font-size: 0.8rem;
+            color: #999999;
         }
 
         /* Education Section */
