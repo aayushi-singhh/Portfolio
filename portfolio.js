@@ -95,26 +95,28 @@
                 }
             });
         });
+        // Load EmailJS
+        (function () {
+        emailjs.init("Ng8_dWgtokDlubW7I"); // Your public key
+        })();
 
-        // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        window.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-            
-            // Here you would typically send the data to a server
-            // For demo purposes, we'll just show an alert
-            alert('Thank you for your message! I\'ll get back to you soon.');
-            
-            // Reset form
-            this.reset();
+
+            emailjs.sendForm('service_739gm5l', 'template_ri4irgs', this)
+            .then(function (response) {
+                alert("📬 Thank you for your message! I'll get back to you soon.");
+                console.log("SUCCESS!", response);
+                document.getElementById('contactForm').reset();
+            }, function (error) {
+                alert("❌ Oops! Something went wrong. Please try again.");
+                console.log("FAILED...", error);
+            });
+        });
         });
 
+        
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
