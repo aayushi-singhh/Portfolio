@@ -103,8 +103,9 @@
         window.addEventListener('DOMContentLoaded', function () {
         document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();
+            console.log("Form Data:", new FormData(this));
 
-            emailjs.sendForm('service_739gm5l', 'template_ri4irgs', this)
+            emailjs.sendForm('service_739gm5l', 'template_lfrkb5g', this)
             .then(function (response) {
                 alert("📬 Thank you for your message! I'll get back to you soon.");
                 console.log("SUCCESS!", response);
