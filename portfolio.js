@@ -98,28 +98,29 @@
 
         // Contact form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-            .then(function (response) {
-                console.log("SUCCESS!", response);
-            }, function (error) {
-                alert("❌ Oops! Something went wrong. Please try again.");
-                console.log("FAILED...", error);
-            });
-            
-            
-            alert('Thank you for your message! I\'ll get back to you soon.');
-            
-            // Reset form
-            this.reset();
+        e.preventDefault();
+
+        const formData = new FormData(this);
+
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Thank you for your message! I\'ll get back to you soon.');
+                this.reset();
+            } else {
+                alert('Oops! There was a problem submitting your form.');
+            }
+        })
+        .catch(error => {
+            alert('Network error: Please try again later.');
         });
+    });
+
+        
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
